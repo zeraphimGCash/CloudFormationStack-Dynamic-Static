@@ -1,0 +1,19 @@
+Parameters:
+  LatestAmiId:
+    Description: "Latest AMI"
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
+Resources:
+  Bucket:
+    Type: 'AWS::S3::Bucket'
+  Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: "t2.micro"
+      ImageId: !Ref "LatestAmiId"
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: subnet-09200f95bef01cbf2 
+          GroupSet:
+            - sg-090a6ffd1f91c8fde  

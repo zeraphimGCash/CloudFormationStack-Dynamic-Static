@@ -1,0 +1,1 @@
+# CloudFormationStack-Dynamic-Static
